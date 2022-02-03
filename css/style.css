@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body{
     background-color: #EEF9BF;
 }
@@ -7,4 +10,19 @@ h1{
     color: #75B79E;
     margin-top: 40px;
     text-align: center;
+}
+.card{
+    width: 117px;
+    height: 146px;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    position: relative;
+}
+.card img{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: 24px;
+    left: 10px;
 }
