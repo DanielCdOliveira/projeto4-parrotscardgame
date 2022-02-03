@@ -4,6 +4,16 @@
 body{
     background-color: #EEF9BF;
 }
+section{
+    width: 70vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin: auto;
+    margin-top: 47px;
+}
 h1{
     font-family: 'Roboto', sans-serif;
     font-size: 56px;
@@ -14,15 +24,34 @@ h1{
 .card{
     width: 117px;
     height: 146px;
-    background: #A7E9AF;
-    border: 1px solid #99CEA8;
-    border-radius: 5px;
     position: relative;
+    transition: all 5s;
+    
+}
+.face {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;  
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+.back{
+    transform: rotateY(180deg);
+}
+.flip{
+    transform: rotateY(-180deg);
+}
+.flip2{
+    transform: rotateY(0deg);
 }
 .card img{
     width: 100px;
     height: 100px;
-    position: relative;
-    top: 24px;
-    left: 10px;
 }
