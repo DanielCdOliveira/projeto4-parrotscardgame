@@ -1,11 +1,11 @@
-const numberOfCards = askCards() / 2;
+const numberOfCards = 7;
 
-function askCards() {
-  do {
-    number = prompt("Quantas cartas você deseja? (números pares de 4 à 14)")
-  } while (number < 4 || number > 14 || number % 2 != 0)
-  return number;
-}
+// function askCards() {
+//   do {
+//     number = prompt("Quantas cartas você deseja? (números pares de 4 à 14)")
+//   } while (number < 4 || number > 14 || number % 2 != 0)
+//   return number;
+// }
 const cards = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"];
 const cardsInGame = [];
 
@@ -18,22 +18,25 @@ function createCardsInGame() {
     cardsInGame.push(cards[i]);
   }
   cardsInGame.sort(comparador);
-  console.log(cardsInGame)
+  console.log(cardsInGame.length)
 }
  
 function createCards() {
   let card = document.querySelector("section");
 
   for (let i = 0; i < cardsInGame.length; i++) {
+
     card.innerHTML += `
-  <div onclick="flip(this)" class="card ${cards[i]}">
+  <div onclick="flip(this)" class="card ${cardsInGame[i]}">
   <div  class="front face">
       <img src="assets/front.png" alt="">
   </div>
   <div  class="back face">
-      <img src="assets/${cards[i]}.gif" alt="">
+      <img src="assets/${cardsInGame[i]}.gif" alt="">
   </div>
-</div>`}
+</div>`
+console.log(card)
+}
 
 }
 
