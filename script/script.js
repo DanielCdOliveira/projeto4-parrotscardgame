@@ -1,6 +1,5 @@
-
 //Pegando numero de pares
-const pairsInGame  = askCards()/2;
+const pairsInGame = askCards() / 2;
 
 function askCards() {
   do {
@@ -22,7 +21,7 @@ const cardsInGame = [];
 // Cria o array com as cartas que serao colocadas na tela
 function createCardsInGame() {
 
-  for (let i = 0; i < pairsInGame ; i++) {
+  for (let i = 0; i < pairsInGame; i++) {
     cardsInGame.push(cards[i]);
     cardsInGame.push(cards[i]);
   }
@@ -69,7 +68,7 @@ let numberOfPairs = 0;
 
 function select(element) {
   numberOfClicks++;
-  console.log(numberOfClicks)
+
 
   element.style = "pointer-events: none";
 
@@ -80,26 +79,33 @@ function select(element) {
 
   compare.push(element.classList[1]);
 
-  console.log(compare);
-  console.log(cardsSelected);
+  
   if (cardsSelected.length > 1) {
+
     if (compare[0] == compare[1]) {
+      console.log(cardsSelected[0].querySelector(".back"))
+      cardsSelected[0].querySelector(".back").style = "border: 5px solid black"
+      cardsSelected[1].querySelector(".back").style = "border: 5px solid black"
       cardsSelected = [];
       compare = [];
-      console.log(compare);
       numberOfPairs++;
-      if(numberOfPairs == pairsInGame){
-        clearInterval(timer);
+
+      
+
+      if (numberOfPairs == pairsInGame) {
+        clearInterval(interval);
         setTimeout(showAlert, 1000);
+
       }
     } else {
+
       setTimeout(flip, 1000);
       cardsSelected[0].style = "pointer-events: auto";
       cardsSelected[1].style = "pointer-events: auto";
     }
   }
 
-  
+
 }
 
 function flip() {
@@ -112,18 +118,18 @@ function flip() {
 
 }
 
-function showAlert (){
-  alert(`Voce venceu e levou ${timerDisplay.innerText} segundos`);
+function showAlert() {
+  alert(`Você ganhou em ${numberOfClicks} jogadas e ${timerDisplay.innerText} segundos`);
 }
 
 //BONUS CONTADOR
 
-setInterval(timer, 1000);
+const interval = setInterval(timer, 1000);
 let count = 0;
 let timerDisplay = document.querySelector(".timer");
 
 
-function timer(){
-count += 1;
-timerDisplay.innerText = count;
+function timer() {
+  count += 1;
+  timerDisplay.innerText = count;
 };
