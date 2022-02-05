@@ -6,11 +6,18 @@ const numberOfCards = 7;
 //   } while (number < 4 || number > 14 || number % 2 != 0)
 //   return number;
 // }
+
+// BLOCO 1: FUNÇÕES PARA CRIAR AS CARTAS NA TELA
+
+// Array que armazanam as imagens
 const cards = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"];
+// Embaralhar o array acima
+cards.sort(comparador);
+// Array que sera usado para colocar as cartas na tela
 const cardsInGame = [];
 
-cards.sort(comparador);
-console
+
+// Cria o array com as cartas que serao colocadas na tela
 function createCardsInGame() {
 
   for (let i = 0; i < numberOfCards; i++) {
@@ -18,46 +25,77 @@ function createCardsInGame() {
     cardsInGame.push(cards[i]);
   }
   cardsInGame.sort(comparador);
-  console.log(cardsInGame.length)
 }
- 
+// Coloca as cartas na tela
 function createCards() {
   let card = document.querySelector("section");
 
   for (let i = 0; i < cardsInGame.length; i++) {
 
     card.innerHTML += `
-  <div onclick="flip(this)" class="card ${cardsInGame[i]}">
-  <div  class="front face">
+  <div onclick="select(this)" class="card ${cardsInGame[i]}">
+    <div  class="front face">
       <img src="assets/front.png" alt="">
-  </div>
-  <div  class="back face">
+    </div>
+    <div  class="back face">
       <img src="assets/${cardsInGame[i]}.gif" alt="">
-  </div>
-</div>`
-console.log(card)
-}
+    </div>
+  </div>`
+
+  }
 
 }
-
+// chama as duas funções acim
 function cardsDisplay() {
 
   createCardsInGame();
   createCards();
 
 }
+// Executa a funçao acima
 cardsDisplay()
-
-
-
-function flip(element) {
-
-  element.querySelector(".front").classList.toggle("flip")
-  element.querySelector(".back").classList.toggle("flip2")
-}
-
+// embaralha o array
 function comparador() {
   return Math.random() - 0.5;
 }
 
+// BLOCO 2: INTERAÇÕES COM A CARTA
+let cardsSelected = []
+let compare = [];
 
+function select(element) {
+  let virado = true;
+
+
+  element.querySelector(".front").classList.toggle("flip");
+  element.querySelector(".back").classList.toggle("flip2");
+
+  cardsSelected.push(element);
+
+  compare.push(element.classList[1]);
+
+  console.log(compare);
+  console.log(cardsSelected);
+  if (cardsSelected.length > 1) {
+    if (compare[0] == compare[1]) {
+      cardsSelected = [];
+      compare = [];
+      element.style = "pointer-events: none";
+      console.log(compare);
+    } else {
+      setTimeout(flip, 1000);
+    }
+  }
+
+  
+}
+
+function flip() {
+  cardsSelected[0].querySelector(".front").classList.toggle("flip");
+  cardsSelected[0].querySelector(".back").classList.toggle("flip2");
+  cardsSelected[1].querySelector(".front").classList.toggle("flip");
+  cardsSelected[1].querySelector(".back").classList.toggle("flip2");
+  cardsSelected = [];
+  compare = [];
+
+}
