@@ -1,11 +1,11 @@
-const numberOfCards = 7;
+const pairsInGame  = askCards()/2;
 
-// function askCards() {
-//   do {
-//     number = prompt("Quantas cartas você deseja? (números pares de 4 à 14)")
-//   } while (number < 4 || number > 14 || number % 2 != 0)
-//   return number;
-// }
+function askCards() {
+  do {
+    number = prompt("Quantas cartas você deseja? (números pares de 4 à 14)")
+  } while (number < 4 || number > 14 || number % 2 != 0)
+  return number;
+}
 
 // BLOCO 1: FUNÇÕES PARA CRIAR AS CARTAS NA TELA
 
@@ -20,7 +20,7 @@ const cardsInGame = [];
 // Cria o array com as cartas que serao colocadas na tela
 function createCardsInGame() {
 
-  for (let i = 0; i < numberOfCards; i++) {
+  for (let i = 0; i < pairsInGame ; i++) {
     cardsInGame.push(cards[i]);
     cardsInGame.push(cards[i]);
   }
@@ -62,8 +62,8 @@ function comparador() {
 // BLOCO 2: INTERAÇÕES COM A CARTA
 let cardsSelected = []
 let compare = [];
-let numberOfClicks = 0
-
+let numberOfClicks = 0;
+let numberOfPairs = 0;
 
 function select(element) {
   numberOfClicks++;
@@ -85,6 +85,10 @@ function select(element) {
       cardsSelected = [];
       compare = [];
       console.log(compare);
+      numberOfPairs++;
+      if(numberOfPairs == pairsInGame){
+        setTimeout(showAlert, 1000);
+      }
     } else {
       setTimeout(flip, 1000);
       cardsSelected[0].style = "pointer-events: auto";
@@ -103,4 +107,8 @@ function flip() {
   cardsSelected = [];
   compare = [];
 
+}
+
+function showAlert (){
+  alert("Voce venceu");
 }

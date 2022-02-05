@@ -57,3 +57,10 @@ h1{
     width: 100px;
     height: 100px;
 }
+
+@media (max-width: 370px){
+    h1{
+        font-size: 36px;
+    }
+   
+}
