@@ -1,3 +1,5 @@
+
+//Pegando numero de pares
 const pairsInGame  = askCards()/2;
 
 function askCards() {
@@ -33,11 +35,11 @@ function createCards() {
   for (let i = 0; i < cardsInGame.length; i++) {
 
     card.innerHTML += `
-  <div onclick="select(this)" class="card ${cardsInGame[i]}">
-    <div  class="front face">
+  <div onclick="select(this)" data-identifier="card" class="card ${cardsInGame[i]}">
+    <div data-identifier="back-face" class="front face">
       <img src="assets/front.png" alt="">
     </div>
-    <div  class="back face">
+    <div data-identifier="front-face" class="back face">
       <img src="assets/${cardsInGame[i]}.gif" alt="">
     </div>
   </div>`
@@ -87,6 +89,7 @@ function select(element) {
       console.log(compare);
       numberOfPairs++;
       if(numberOfPairs == pairsInGame){
+        clearInterval(timer);
         setTimeout(showAlert, 1000);
       }
     } else {
@@ -110,5 +113,17 @@ function flip() {
 }
 
 function showAlert (){
-  alert("Voce venceu");
+  alert(`Voce venceu e levou ${timerDisplay.innerText} segundos`);
 }
+
+//BONUS CONTADOR
+
+setInterval(timer, 1000);
+let count = 0;
+let timerDisplay = document.querySelector(".timer");
+
+
+function timer(){
+count += 1;
+timerDisplay.innerText = count;
+};

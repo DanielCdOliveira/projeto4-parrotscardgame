@@ -3,6 +3,7 @@
 }
 body{
     background-color: #EEF9BF;
+    font-family: 'Roboto', sans-serif;
 }
 section{
     width: 83vw;
@@ -13,9 +14,9 @@ section{
     margin: auto;
     margin-top: 47px;
     background-color: aqua;
+    position: relative;
 }
 h1{
-    font-family: 'Roboto', sans-serif;
     font-size: 56px;
     color: #75B79E;
     margin-top: 40px;
@@ -56,6 +57,21 @@ h1{
 .card img{
     width: 100px;
     height: 100px;
+}
+.timer-container{
+    position: absolute; 
+    top: -35px;
+    right: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(202, 25, 25);
+}
+.timer-container ion-icon{
+    font-size: 30px;
+}
+span{
+    font-size: 30px;
 }
 
 @media (max-width: 370px){
