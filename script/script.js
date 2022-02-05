@@ -62,10 +62,14 @@ function comparador() {
 // BLOCO 2: INTERAÇÕES COM A CARTA
 let cardsSelected = []
 let compare = [];
+let numberOfClicks = 0
+
 
 function select(element) {
-  let virado = true;
+  numberOfClicks++;
+  console.log(numberOfClicks)
 
+  element.style = "pointer-events: none";
 
   element.querySelector(".front").classList.toggle("flip");
   element.querySelector(".back").classList.toggle("flip2");
@@ -80,10 +84,11 @@ function select(element) {
     if (compare[0] == compare[1]) {
       cardsSelected = [];
       compare = [];
-      element.style = "pointer-events: none";
       console.log(compare);
     } else {
       setTimeout(flip, 1000);
+      cardsSelected[0].style = "pointer-events: auto";
+      cardsSelected[1].style = "pointer-events: auto";
     }
   }
 
