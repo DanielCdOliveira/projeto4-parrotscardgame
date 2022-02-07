@@ -28,6 +28,7 @@ h1{
     margin: 0px 17px 34px 17px;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 .face {
     width: 100%;

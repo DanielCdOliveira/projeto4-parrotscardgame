@@ -61,14 +61,18 @@ function comparador() {
 }
 
 // BLOCO 2: INTERAÇÕES COM A CARTA
+
+
+
 let cardsSelected = []
 let compare = [];
 let numberOfClicks = 0;
 let numberOfPairs = 0;
+let allCards = document.querySelectorAll(".card")
 
+allCards.style = "pointer-events: none";
 function select(element) {
   numberOfClicks++;
-
 
   element.style = "pointer-events: none";
 
@@ -78,14 +82,14 @@ function select(element) {
   cardsSelected.push(element);
 
   compare.push(element.classList[1]);
-
+  
+ 
   
   if (cardsSelected.length > 1) {
-
+    
     if (compare[0] == compare[1]) {
-      console.log(cardsSelected[0].querySelector(".back"))
-      cardsSelected[0].querySelector(".back").style = "border: 5px solid black"
-      cardsSelected[1].querySelector(".back").style = "border: 5px solid black"
+      cardsSelected[0].querySelector(".back").style = "background-color: #75B79E;border: 2px solid black"
+      cardsSelected[1].querySelector(".back").style = "background-color: #75B79E;border: 2px solid black"
       cardsSelected = [];
       compare = [];
       numberOfPairs++;
@@ -98,24 +102,34 @@ function select(element) {
 
       }
     } else {
-
+      allCards.forEach(blockCards);
       setTimeout(flip, 1000);
-      cardsSelected[0].style = "pointer-events: auto";
-      cardsSelected[1].style = "pointer-events: auto";
+     
     }
   }
 
 
 }
 
+
+
 function flip() {
   cardsSelected[0].querySelector(".front").classList.toggle("flip");
   cardsSelected[0].querySelector(".back").classList.toggle("flip2");
   cardsSelected[1].querySelector(".front").classList.toggle("flip");
   cardsSelected[1].querySelector(".back").classList.toggle("flip2");
+  cardsSelected[0].style = "pointer-events: auto";
+  cardsSelected[1].style = "pointer-events: auto";
   cardsSelected = [];
   compare = [];
+  allCards.forEach(unblockCards);
 
+}
+function blockCards (cardSelected){
+  cardSelected.style = "pointer-events: none";
+}
+function unblockCards (cardSelected){
+  cardSelected.style = "pointer-events: auto";
 }
 
 function showAlert() {
