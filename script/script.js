@@ -110,7 +110,7 @@ function select(element) {
 
 
 }
-
+// virar cartas diferentes
 function flip() {
   cardsSelected[0].querySelector(".front").classList.toggle("flip");
   cardsSelected[0].querySelector(".back").classList.toggle("flip2");
@@ -122,15 +122,15 @@ function flip() {
   compare = [];
   allCards.forEach(unblockCards);
 }
-
+// bloqueia carta de serem clicadas
 function blockCards(cardSelected) {
   cardSelected.style = "pointer-events: none";
 }
-
+// desbloqueia carta de serem clicadas
 function unblockCards(cardSelected) {
   cardSelected.style = "pointer-events: auto";
 }
-
+// tela de vitoria/jogar novamente
 function showModal() {
   let modal = document.querySelector(".modal-container")
   modal.querySelector("h3").innerText = `Você ganhou com ${numberOfClicks} jogadas em ${timerDisplay.innerText} segundos!`
