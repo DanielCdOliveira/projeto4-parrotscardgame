@@ -140,13 +140,14 @@ function showModal() {
 //BONUS 
 
 // CONTADOR
-const interval = setInterval(timer, 1000);
+let interval = setInterval(timer, 1000);
 let count = 0;
 let timerDisplay = document.querySelector(".timer");
 
 function timer() {
   count += 1;
   timerDisplay.innerText = count;
+  console.log(count)
 };
 
 // MODAL DE JOGAR NOVAMENTE
@@ -157,22 +158,33 @@ function playAgain() {
     answer = prompt("Deseja jogar novamente? (sim ou nao)")
   } while (answer != "sim" && answer != "nao")
   if (answer == "sim") {
+
+    //Poderia usar document.location.reload(true); 
+
     let section = document.querySelector("section");
-    section.innerHTML = ``;
+    section.innerHTML = `<div class="timer-container">
+    <ion-icon name="hourglass-outline"></ion-icon>
+    <span class="timer">--</span>
+    </div>`;
+    // zerando valores
     numberOfClicks = 0;
     numberOfPairs = 0;
     cardsSelected = [];
     compare = [];
     cardsInGame = [];
-
     pairsInGame = askCards() / 2;
-    
+
     cardsDisplay();
     allCards = document.querySelectorAll(".card")
     allCards.style = "pointer-events: none";
-    
 
-    let modal = document.querySelector(".modal-container")
+    interval = setInterval(timer, 1000);
+    count = 0;
+    timerDisplay = document.querySelector(".timer");
+
+
+
+    let modal = document.querySelector(".modal-container");
     modal.style = "display:none";
   }
 }
