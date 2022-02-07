@@ -70,33 +70,36 @@ let numberOfClicks = 0;
 let numberOfPairs = 0;
 let allCards = document.querySelectorAll(".card")
 
-allCards.style = "pointer-events: none";
-
+// vira as cartas e compara se sao iguais
 function select(element) {
+  // numero de cliques
   numberOfClicks++;
-
+  // carta clicada perde o onclick
   element.style = "pointer-events: none";
-
+  // vira a carta
   element.querySelector(".front").classList.toggle("flip");
   element.querySelector(".back").classList.toggle("flip2");
-
+  // adiciona a carta no array para alterçoes
   cardsSelected.push(element);
-
+  // adciona a carta no array para comparaçoes
   compare.push(element.classList[1]);
 
 
-
+//  verifica se tem mais de uma carta no array
   if (cardsSelected.length > 1) {
-
+  // compara as cartas
     if (compare[0] == compare[1]) {
+      // se forem iguais muda o estilo
       cardsSelected[0].querySelector(".back").style = "background-color: #75B79E;border: 2px solid black"
       cardsSelected[1].querySelector(".back").style = "background-color: #75B79E;border: 2px solid black"
+      // zera os arrays
       cardsSelected = [];
       compare = [];
+      // adiciona um par
       numberOfPairs++;
 
 
-
+      // compara para verse o jogo acabou
       if (numberOfPairs == pairsInGame) {
         clearInterval(interval);
         setTimeout(showModal, 1000);
@@ -181,8 +184,6 @@ function playAgain() {
     interval = setInterval(timer, 1000);
     count = 0;
     timerDisplay = document.querySelector(".timer");
-
-
 
     let modal = document.querySelector(".modal-container");
     modal.style = "display:none";
