@@ -133,7 +133,7 @@ function unblockCards(cardSelected) {
 
 function showModal() {
   let modal = document.querySelector(".modal-container")
-  modal.querySelector("h3").innerText = `Você ganhou em ${numberOfClicks} jogadas e ${timerDisplay.innerText} segundos!`
+  modal.querySelector("h3").innerText = `Você ganhou com ${numberOfClicks} jogadas em ${timerDisplay.innerText} segundos!`
   modal.style = "display:flex";
 }
 
