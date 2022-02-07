@@ -1,5 +1,5 @@
 //Pegando numero de pares
-const pairsInGame = askCards() / 2;
+let pairsInGame = askCards() / 2;
 
 function askCards() {
   do {
@@ -15,7 +15,7 @@ const cards = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", 
 // Embaralhar o array acima
 cards.sort(comparador);
 // Array que sera usado para colocar as cartas na tela
-const cardsInGame = [];
+let cardsInGame = [];
 
 
 // Cria o array com as cartas que serao colocadas na tela
@@ -71,6 +71,7 @@ let numberOfPairs = 0;
 let allCards = document.querySelectorAll(".card")
 
 allCards.style = "pointer-events: none";
+
 function select(element) {
   numberOfClicks++;
 
@@ -82,11 +83,11 @@ function select(element) {
   cardsSelected.push(element);
 
   compare.push(element.classList[1]);
-  
- 
-  
+
+
+
   if (cardsSelected.length > 1) {
-    
+
     if (compare[0] == compare[1]) {
       cardsSelected[0].querySelector(".back").style = "background-color: #75B79E;border: 2px solid black"
       cardsSelected[1].querySelector(".back").style = "background-color: #75B79E;border: 2px solid black"
@@ -94,24 +95,21 @@ function select(element) {
       compare = [];
       numberOfPairs++;
 
-      
+
 
       if (numberOfPairs == pairsInGame) {
         clearInterval(interval);
-        setTimeout(showAlert, 1000);
-
+        setTimeout(showModal, 1000);
       }
     } else {
       allCards.forEach(blockCards);
       setTimeout(flip, 1000);
-     
+
     }
   }
 
 
 }
-
-
 
 function flip() {
   cardsSelected[0].querySelector(".front").classList.toggle("flip");
@@ -123,27 +121,58 @@ function flip() {
   cardsSelected = [];
   compare = [];
   allCards.forEach(unblockCards);
-
 }
-function blockCards (cardSelected){
+
+function blockCards(cardSelected) {
   cardSelected.style = "pointer-events: none";
 }
-function unblockCards (cardSelected){
+
+function unblockCards(cardSelected) {
   cardSelected.style = "pointer-events: auto";
 }
 
-function showAlert() {
-  alert(`Você ganhou em ${numberOfClicks} jogadas e ${timerDisplay.innerText} segundos`);
+function showModal() {
+  let modal = document.querySelector(".modal-container")
+  modal.querySelector("h3").innerText = `Você ganhou em ${numberOfClicks} jogadas e ${timerDisplay.innerText} segundos!`
+  modal.style = "display:flex";
 }
 
-//BONUS CONTADOR
+//BONUS 
 
+// CONTADOR
 const interval = setInterval(timer, 1000);
 let count = 0;
 let timerDisplay = document.querySelector(".timer");
-
 
 function timer() {
   count += 1;
   timerDisplay.innerText = count;
 };
+
+// MODAL DE JOGAR NOVAMENTE
+
+function playAgain() {
+  let answer = "";
+  do {
+    answer = prompt("Deseja jogar novamente? (sim ou nao)")
+  } while (answer != "sim" && answer != "nao")
+  if (answer == "sim") {
+    let section = document.querySelector("section");
+    section.innerHTML = ``;
+    numberOfClicks = 0;
+    numberOfPairs = 0;
+    cardsSelected = [];
+    compare = [];
+    cardsInGame = [];
+
+    pairsInGame = askCards() / 2;
+    
+    cardsDisplay();
+    allCards = document.querySelectorAll(".card")
+    allCards.style = "pointer-events: none";
+    
+
+    let modal = document.querySelector(".modal-container")
+    modal.style = "display:none";
+  }
+}

@@ -1,11 +1,13 @@
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: #EEF9BF;
     font-family: 'Roboto', sans-serif;
 }
-section{
+
+section {
     width: 83vw;
     display: flex;
     justify-content: center;
@@ -15,13 +17,26 @@ section{
     margin-top: 47px;
     position: relative;
 }
-h1{
+
+h1 {
     font-size: 56px;
     color: #75B79E;
     margin-top: 40px;
     text-align: center;
 }
-.card{
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 50px;
+}
+h4{
+    font-size: 22px;
+}
+.card {
     width: 117px;
     height: 146px;
     position: relative;
@@ -30,11 +45,12 @@ h1{
     outline: none;
     cursor: pointer;
 }
+
 .face {
     width: 100%;
     height: 100%;
     background-color: #A7E9AF;
-    border: 1px solid #99CEA8;  
+    border: 1px solid #99CEA8;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -44,39 +60,101 @@ h1{
     transition: all .5s;
     transform-style: preserve-3d;
 }
-.back{
+
+.back {
     transform: rotateY(180deg);
 }
-.flip{
+
+.flip {
     transform: rotateY(-180deg);
 }
-.flip2{
+
+.flip2 {
     transform: rotateY(0deg);
 }
-.card img{
+
+.card img {
     width: 100px;
     height: 100px;
 }
-.timer-container{
-    position: absolute; 
+
+.timer-container {
+    position: absolute;
     top: -35px;
     right: 23px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: rgb(202, 25, 25);
-    
+
 }
-.timer-container ion-icon{
+
+.timer-container ion-icon {
     font-size: 30px;
 }
-span{
+.timer-container span {
     font-size: 30px;
 }
 
-@media (max-width: 370px){
-    h1{
+
+
+
+/* Modal */
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 300px;
+    height: 250px;
+    background-color: #75B79E;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    position: relative;
+}
+
+.modal-text {
+    margin: 21px 25px 2px 25px;
+    color: #EEF9BF;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.retry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 25px;
+}
+.retry span{
+    font-size: 22px;
+}
+.retry:hover {
+    cursor: pointer;
+}
+.retry h4:active {
+   font-size: 18px;
+}
+.modal-text ion-icon {
+    font-size: 30px;
+}
+
+
+@media (max-width: 370px) {
+    h1 {
         font-size: 36px;
     }
-   
+
 }
